@@ -43,4 +43,9 @@ class Order extends Model
     {
         return $query->whereNull('arrived_at');
     }
+
+    public function scopeCompleted(Builder $query): Builder
+    {
+        return $query->whereNotNull('arrived_at');
+    }
 }

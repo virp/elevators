@@ -11,26 +11,32 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-<div id="app" class="container">
+<div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Лифты</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container">
+            <a class="navbar-brand" href="/">Лифты</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Отчеты</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Статистика</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Отчеты</a>
+                        <div class="dropdown-menu">
+                            <a href="{{ route('orders') }}" class="dropdown-item">Вызовы лифтов</a>
+                            <a href="{{ route('iterations') }}" class="dropdown-item">Итерации</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('stats') }}">Статистика</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <section class="mt-5">
+    <section class="mt-5 container">
         @yield('content')
     </section>
 </div>
